@@ -23,7 +23,9 @@ export const router = createBrowserRouter(
           path: "/update_user/:id",
           element: <UpdateUser />,
           loader: async ({ params }) =>
-            await axios.get(`http://localhost:5000/update_user/${params.id}`),
+            await axios.get(
+              `${import.meta.env.VITE_DOMAIN}/update_user/${params.id}`
+            ),
         },
       ],
     },
