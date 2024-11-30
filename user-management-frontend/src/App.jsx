@@ -12,7 +12,7 @@ const App = () => {
   const onDelete = async (Id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/user/delete/${Id}`
+        `${import.meta.env.VITE_DOMAIN}/user/delete/${Id}`
       );
       if (response?.data?.success) {
         toast.success("Delete successful!");
@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = async () => {
-      const response = await axios.get("http://localhost:5000/users");
+      const response = await axios.get(`${import.meta.env.VITE_DOMAIN}/users`);
       setUsers(response?.data);
     };
     unsubscribe();
@@ -58,7 +58,7 @@ const App = () => {
               </thead>
               <tbody>
                 {users?.map((item, index) => (
-                  <tr key={item.id} className="border-t hover:bg-gray-50">
+                  <tr key={index} className="border-t hover:bg-gray-50">
                     <td className="border-b  px-4 py-2">{index}</td>
                     <td className="border-b px-4 py-2">{item?.name}</td>
                     <td className="border-b px-4 py-2">{item?.email}</td>

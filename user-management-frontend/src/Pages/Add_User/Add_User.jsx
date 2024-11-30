@@ -14,7 +14,10 @@ const Add_User = () => {
         gender: formdata.get("gender"),
         status: formdata.get("status"),
       };
-      const response = await axios.post("http://localhost:5000/user", UserData);
+      const response = await axios.post(
+        `${import.meta.env.VITE_DOMAIN}/user`,
+        UserData
+      );
       if (response?.data?.success) {
         form.reset();
         toast.success(response?.data?.message);

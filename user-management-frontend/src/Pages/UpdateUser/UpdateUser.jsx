@@ -23,7 +23,7 @@ const UpdateUser = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:5000/update_user/${params.id}`,
+        `${import.meta.env.VITE_DOMAIN}/update_user/${params.id}`,
         UserData
       );
 
